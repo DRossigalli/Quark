@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Quark</title>
+        <link rel="stylesheet" href="../assets/css/main.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <div class="calculator">
+            <header id="toolbar">
+                <!-- <div class="tool_menu" onclick="dropdownMenu()">
+                    <i class="material-icons tool-icon more"> menu </i>
+                </div> -->
+                <p class="easter_egg"><span>Q</span>uark</p>
+                <section class="tool-container">
+                    <!-- <div class="tool-icon pin" onclick="expandMenu()"><i class="material-icons"> vertical_align_top </i></div> -->
+                    <div class="tool-icon add" onclick="windowSize()"><i class="material-icons"> add </i></div>
+                    <div class="tool-icon minimize" onclick="closeApp(2)"><i class="material-icons">expand_more</i></div>
+                    <div class="tool-icon close" onclick="closeApp(1)"><i class="material-icons">close</i></div>
+                </section>
+                
+            </header>
+
+            <i class="material-icons options">more_vert</i>
+            <div class="options_menu">
+                <div class="menu_item light" onclick="darkMode(0)">Light</div>
+                <div class="menu_item dark" onclick="darkMode(1)">Dark</div>
+                <div class="menu_item" onclick="themeChange(1)">Getting Hot</div>
+                <div class="menu_item" onclick="themeChange(2)">Infinity</div>
+                <div class="menu_item" onclick="themeChange(3)">Blue Sky</div>
+                <div class="menu_item" onclick="themeChange(4)">Nice Pink</div>
+                <div class="menu_item" onclick="themeChange(5)">Passion Red</div>
+                <div class="menu_item" onclick="themeChange(6)">Toxic Green</div>
+                <div class="menu_item" onclick="themeChange('x')">Random</div>
+            </div>
+            <section class="result_top"></section>
+            <section id="result_screen">0</section>
+            <section id="buttons">
+                <div id="BG"></div>
+                <div class="grid_container">
+                    <button class="button number nine">9</button>
+                    <button class="button number eight">8</button>
+                    <button class="button number seven">7</button>
+                    <button class="button number six">6</button>
+                    <button class="button number five">5</button>
+                    <button class="button number four">4</button>
+                    <button class="button number three">3</button>
+                    <button class="button number two">2</button>
+                    <button class="button number one">1</button>
+                    <button class="button number zero">0</button>
+                    <button class="button number decimal" data-action="decimal">,</button>
+
+                    <button class="button number delete" data-action="clear"><i class="material-icons" data-action="clear">keyboard_backspace</i></button>
+                    <button class="button operator equal" data-action="calculate">=</button>
+                    <button class="button operator plus" data-action="add">+</button>
+                    <button class="button operator minus" data-action="subtract">-</button>
+                    <button class="button operator mult" data-action="multiply">×</button>
+                    <button class="button operator divide" data-action="divide">÷</button>
+                </div>
+            </section>
+        </div>
+        <script src="js/index.js"></script>
+        <script src="js/theme.js"></script>
+        <script src="js/functions.js"></script>
+        <script src="js/calculate.js"></script>
+    </body>
+</html>
