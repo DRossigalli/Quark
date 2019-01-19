@@ -182,25 +182,30 @@ keys.addEventListener('click', function (event) {
 
         //Se for um número
         if (!action) {
+            //Remove .active do operador
             for (var i = 0; i < operatorKeys.length; i++) {
                 operatorKeys[i].classList.remove('active');
             }
 
+            //Se tiver "0" no display
             if (mainDisplay.textContent === '0') {
                 mainDisplay.textContent = keyContent;
                 secondDisplay.textContent += keyContent;
-            } else {
+            } else { //Se não tiver "0" no display
                 mainDisplay.textContent += keyContent;
                 secondDisplay.textContent += keyContent;
             }
         }
         //Se for um operador
         if (action === 'add' || action === 'subtract' || action === 'multiply' || action === 'divide') {
+            //Remove .active do operador
             for (var i = 0; i < operatorKeys.length; i++) {
                 operatorKeys[i].classList.remove('active');
             }
+            //Adiciona .active no operador sendo clicado
             key.classList.add('active');
 
+            //Se não tiver um resultado
             if (result == undefined) {
                 if (keyContent == '*') {
                     secondDisplay.textContent += ' × ';
@@ -209,8 +214,8 @@ keys.addEventListener('click', function (event) {
                 } else {
                     secondDisplay.textContent += ' ' + keyContent + ' ';
                 }
-            } else if (result != undefined) {
-                if (enterPressed) {
+            } else if (result != undefined) { //Se tiver um resultado
+                if (enterPressed) { //Se o enter foi pressionado
                     if (keyContent == '*') {
                         secondDisplay.textContent += result +  ' × ';
                     } else if (keyContent == '/') {
@@ -218,7 +223,7 @@ keys.addEventListener('click', function (event) {
                     } else {
                         secondDisplay.textContent += result + ' ' + keyContent + ' ';
                     }
-                } else {
+                } else { //Se o enter não foi pressionado
                     if (keyContent == '*') {
                         secondDisplay.textContent += ' × ';
                     } else if (keyContent == '/') {
@@ -229,13 +234,14 @@ keys.addEventListener('click', function (event) {
                 }
             }
 
+            //Se não for a primeira vez clicando no operador
             if (operator != undefined) {
                 mainDisplay.textContent = '0';
                 var result = calculate(firstNum, operator, secondNum);
                 firstNum = result;
                 operator = key.textContent;
                 secondNum = undefined;
-            } else {
+            } else { //Se for a primeira vez clicando no operador
                 firstNum = mainDisplay.textContent;
                 operator = key.textContent;
                 mainDisplay.textContent = '0';
@@ -243,6 +249,7 @@ keys.addEventListener('click', function (event) {
         }
         //Se for um decimal
         if (action === 'decimal') {
+            //Verifica se tem um "0" no display
             if (mainDisplay.textContent == '0') {
                 secondDisplay.textContent += '0.';
             }
@@ -262,6 +269,7 @@ keys.addEventListener('click', function (event) {
         }
         //Botão de "="
         if (action === 'calculate') {
+            //Inicio do contador do Easter Egg
             smileyCounter++;
             for (var i = 0; i < operatorKeys.length; i++) {
                 operatorKeys[i].classList.remove('active');
@@ -269,17 +277,21 @@ keys.addEventListener('click', function (event) {
             if (smileyCounter >= 10) {
                 mainDisplay.textContent = ':)'
             }
+            //Fim do Easter Egg
 
+            //Se tiver um operador definido
             if (operator !=  undefined) {
                 secondNum = mainDisplay.textContent;
                 const result = calculate(firstNum, operator, secondNum);
                 secondDisplay.textContent += ' ' + key.textContent + ' ';
                 mainDisplay.textContent = result;
             }
+
             firstNum = undefined;
             operator = undefined;
             secondNum = undefined;
             enterPressed = true;
+            console.log(result)
         }
     }
 })
