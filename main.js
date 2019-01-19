@@ -68,7 +68,7 @@ function createWindow (width, height) {
   //   //1080p
   // }
   win = new BrowserWindow({
-    width: Math.ceil(perc(20.833, width)),
+    width: 800, //Math.ceil(perc(20.833, width)),
     height: Math.ceil(perc(55.555, height)),
     frame: false,
     resizable: false,
@@ -80,7 +80,7 @@ function createWindow (width, height) {
     acceptFirstMouse: true
   })
 
-  //win.openDevTools();
+  win.openDevTools();
 
   win.once('ready-to-show', () => {
     win.show()
