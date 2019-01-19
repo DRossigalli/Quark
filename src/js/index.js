@@ -85,7 +85,7 @@ function createWindow(width, height) {
         })
         //1080p >
     }
-    
+
     // win.openDevTools();
 
     win.loadFile('src/index.html')
