@@ -180,6 +180,7 @@ keys.addEventListener('click', function (event) {
             mainDisplay.style.fontSize = '50px';
         }
 
+        //Se for um número
         if (!action) {
             for (var i = 0; i < operatorKeys.length; i++) {
                 operatorKeys[i].classList.remove('active');
@@ -193,6 +194,7 @@ keys.addEventListener('click', function (event) {
                 secondDisplay.textContent += keyContent;
             }
         }
+        //Se for um operador
         if (action === 'add' || action === 'subtract' || action === 'multiply' || action === 'divide') {
             for (var i = 0; i < operatorKeys.length; i++) {
                 operatorKeys[i].classList.remove('active');
@@ -239,12 +241,14 @@ keys.addEventListener('click', function (event) {
                 mainDisplay.textContent = '0';
             }
         }
+        //Se for um decimal
         if (action === 'decimal') {
             if (mainDisplay.textContent == '0') {
                 secondDisplay.textContent += '0.';
             }
             mainDisplay.textContent = mainDisplay.textContent + '.';
         }
+        //Se for o botão clear
         if (action === 'clear') {
             for (var i = 0; i < operatorKeys.length; i++) {
                 operatorKeys[i].classList.remove('active');
@@ -256,6 +260,7 @@ keys.addEventListener('click', function (event) {
             secondNum = undefined;
             result = undefined;
         }
+        //Botão de "="
         if (action === 'calculate') {
             smileyCounter++;
             for (var i = 0; i < operatorKeys.length; i++) {
