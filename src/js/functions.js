@@ -131,6 +131,11 @@ window.addEventListener('keyup', function (event) {
             }
         } else { //Tem resultado
             mainDisplay.textContent = '0';
+            secondDisplay.textContent = '';
+            result = undefined;
+            firstNum = undefined;
+            operator = undefined;
+            secondNum = undefined;
         }
     }
     //Calcula
@@ -205,6 +210,7 @@ keys.addEventListener('click', function (event) {
             //Adiciona .active no operador sendo clicado
             key.classList.add('active');
 
+            //Manipulação do secondDisplay
             //Se não tiver um resultado
             if (result == undefined) {
                 if (keyContent == '*') {
@@ -237,7 +243,7 @@ keys.addEventListener('click', function (event) {
             //Se não for a primeira vez clicando no operador
             if (operator != undefined) {
                 mainDisplay.textContent = '0';
-                var result = calculate(firstNum, operator, secondNum);
+                result = calculate(firstNum, operator, secondNum);
                 firstNum = result;
                 operator = key.textContent;
                 secondNum = undefined;
@@ -282,7 +288,7 @@ keys.addEventListener('click', function (event) {
             //Se tiver um operador definido
             if (operator !=  undefined) {
                 secondNum = mainDisplay.textContent;
-                const result = calculate(firstNum, operator, secondNum);
+                result = calculate(firstNum, operator, secondNum);
                 secondDisplay.textContent += ' ' + key.textContent + ' ';
                 mainDisplay.textContent = result;
             }
@@ -291,7 +297,7 @@ keys.addEventListener('click', function (event) {
             operator = undefined;
             secondNum = undefined;
             enterPressed = true;
-            console.log(result)
+            console.log(result);
         }
     }
 })
