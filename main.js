@@ -69,7 +69,7 @@ function createWindow (width, height) {
   // }
   win = new BrowserWindow({
     width: 800, //Math.ceil(perc(20.833, width)),
-    height: 600, //Math.ceil(perc(55.555, height)),
+    height: Math.ceil(perc(55.555, height)),
     frame: false,
     resizable: false,
     titleBarStyle: 'customButtonsOnHover',

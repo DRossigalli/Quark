@@ -23,70 +23,31 @@ Easter egg
 
 */
 
+function perc(percentage, number) {
+    return (number / 100) * percentage;
+}
+
 let easterQ = document.querySelector('.easter_egg');
 easterQ.addEventListener('click', () => {
     easterQ.innerHTML = 'Escondi outro Easter Egg, já achou?'
 })
 function createWindow(width, height) {
     let win;
-     if (width == 1600 && height == 900) {
-        win = new BrowserWindow({
-            width: 800,
-            height: 600,
-            frame: false,
-            resizable: false,
-            titleBarStyle: 'customButtonsOnHover',
-            show: false,
-            backgroundColor: '#1f1f1f',
-            minimizable: 'true',
-            icon: __dirname + '/Quark.ico',
-            acceptFirstMouse: true
-        })
-        //1600x900
-    } else if (width == 1366 && height == 768) {
-        win = new BrowserWindow({
-            width: 325,
-            height: 500,
-            frame: false,
-            resizable: false,
-            titleBarStyle: 'customButtonsOnHover',
-            show: false,
-            backgroundColor: '#1f1f1f',
-            minimizable: 'true',
-            icon: __dirname + '/Quark.ico',
-            acceptFirstMouse: true
-        })
-        //1366x720
-    } else if (width == 1270 && height == 720) {
-        win = new BrowserWindow({
-            width: 400,
-            height: 600,
-            frame: false,
-            resizable: false,
-            titleBarStyle: 'customButtonsOnHover',
-            show: false,
-            backgroundColor: '#1f1f1f',
-            minimizable: 'true',
-            icon: __dirname + '/Quark.ico',
-            acceptFirstMouse: true
-        })
-        //720p
-    } else {
-        win = new BrowserWindow({
-            width: 400,
-            height: 600,
-            frame: false,
-            resizable: false,
-            titleBarStyle: 'customButtonsOnHover',
-            backgroundColor: '#1f1f1f',
-            minimizable: 'true',
-            icon: '../Quark.ico',
-            acceptFirstMouse: true
-        })
-        //1080p >
-    }
-    
-    // win.openDevTools();
+
+    win = new BrowserWindow({
+        width: Math.ceil(perc(20.833, width)),
+        height: Math.ceil(perc(55.555, height)),
+        frame: false,
+        resizable: false,
+        titleBarStyle: 'customButtonsOnHover',
+        show: false,
+        backgroundColor: '#1f1f1f',
+        minimizable: 'true',
+        icon: __dirname + '/Quark.ico',
+        acceptFirstMouse: true
+    })
+
+     win.openDevTools();
 
     win.loadFile('src/index.html')
 
