@@ -177,7 +177,7 @@ window.addEventListener('keyup', function (event) {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 keys.addEventListener('click', function (event) {
-    if (event.target.matches('button')) {
+    if (event.target.matches('button') || event.target.matches('i')) {
         mainDisplay.style.fontSize = '50px';
 
         let key = event.target;
