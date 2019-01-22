@@ -1,11 +1,6 @@
 /*
  TODO
-
  salvar tema aleatorio
-
- //Green 
-#3F537B #35A26A #7AAC80
- 
 */
 const bg = document.querySelector('#BG');
 const btnNumbers = document.querySelectorAll('.number');

@@ -47,7 +47,7 @@ function createWindow(width, height) {
         acceptFirstMouse: true
     })
 
-     win.openDevTools();
+    //  win.openDevTools();
 
     win.loadFile('src/index.html')
 
@@ -62,7 +62,6 @@ function createWindow(width, height) {
 
 
 function windowSize() {
-    console.log('ta funcionando');
     console.log(screenHeight, screenWidth)
     createWindow(screenWidth, screenHeight);
     // createWindow(1366, 768);
