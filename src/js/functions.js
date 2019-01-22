@@ -8,6 +8,7 @@ let secondNum;
 let result;
 let enterPressed = false;
 let smileyCounter = 0;
+let backspaceCount = 0;
 
 /* TODO
 
@@ -17,6 +18,7 @@ backspace
 
 window.addEventListener('keyup', function (event) {
     let key = event.key;
+    console.log(key)
 
     //Controla o tamanho da letra
     if (mainDisplay.textContent.toString().length > 10) {
@@ -45,7 +47,7 @@ window.addEventListener('keyup', function (event) {
         } else { //Não tem "0" na tela
             //Se não tiver "0" e um decimal for pressionado
             if (key == ',' || key == '.') {
-                if (mainDisplay.textContent.search('.') == -1) {
+                if (mainDisplay.textContent.indexOf('.') == -1) {
                     mainDisplay.textContent += '.';
                     secondDisplay.textContent += '.';
                 }
@@ -120,8 +122,18 @@ window.addEventListener('keyup', function (event) {
     //Deleta o último digito
     if (key == 'Backspace') {
         let mainDisplayString = mainDisplay.textContent.toString();
+        let secondDisplayString = secondDisplay.textContent.toString();
+        backspaceCount = mainDisplayString.length;
+        
         //Verifica se tem resultado
-        if (result == undefined) { //Não tem resultado
+        if (enterPressed) { //Tem resultado
+            mainDisplay.textContent = '0';
+            secondDisplay.textContent = '';
+            result = undefined;
+            firstNum = undefined;
+            operator = undefined;
+            secondNum = undefined;
+        } else {
             //Verifica se é o ultimo digito na tela
             if (mainDisplayString.length == 1) { //É o ultimo digito
                 mainDisplay.textContent = '0';
@@ -129,13 +141,12 @@ window.addEventListener('keyup', function (event) {
                 mainDisplayString = mainDisplayString.slice(0, mainDisplayString.length - 1);
                 mainDisplay.textContent = mainDisplayString;
             }
-        } else { //Tem resultado
-            mainDisplay.textContent = '0';
-            secondDisplay.textContent = '';
-            result = undefined;
-            firstNum = undefined;
-            operator = undefined;
-            secondNum = undefined;
+        }
+
+        if (backspaceCount > 0 && mainDisplayString != 0) {
+            secondDisplayString = secondDisplayString.slice(0, secondDisplayString.length - 1);
+            secondDisplay.textContent = secondDisplayString; 
+            backspaceCount -= 1;
         }
     }
     //Calcula
