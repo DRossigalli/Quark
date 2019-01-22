@@ -10,65 +10,8 @@ function perc(percentage, number) {
 }
 
 function createWindow (width, height) {
-  //  if (width == 1600 && height == 900) {
-  //   win = new BrowserWindow({
-  //     width: 400,
-  //     height: 600,
-  //     frame: false,
-  //     resizable: false,
-  //     titleBarStyle: 'customButtonsOnHover',
-  //     show: false,
-  //     backgroundColor: '#1f1f1f',
-  //     minimizable: 'true',
-  //     icon: __dirname + '/Quark.ico',
-  //     acceptFirstMouse: true
-  //   })
-  //   //1600x900
-  // } else if (width == 1366 && height == 768) {
-  //   win = new BrowserWindow({
-  //     width: 325,
-  //     height: 500,
-  //     frame: false,
-  //     resizable: false,
-  //     titleBarStyle: 'customButtonsOnHover',
-  //     show: false,
-  //     backgroundColor: '#1f1f1f',
-  //     minimizable: 'true',
-  //     icon: __dirname + '/Quark.ico',
-  //     acceptFirstMouse: true
-  //   })
-  //   //1366x720
-  // } else if (width == 1270 && height == 720) {
-  //   win = new BrowserWindow({
-  //     width: 400,
-  //     height: 600,
-  //     frame: false,
-  //     resizable: false,
-  //     titleBarStyle: 'customButtonsOnHover',
-  //     show: false,
-  //     backgroundColor: '#1f1f1f',
-  //     minimizable: 'true',
-  //     icon: __dirname + '/Quark.ico',
-  //     acceptFirstMouse: true
-  //   })
-  //   //720p
-  // } else {
-  //   win = new BrowserWindow({
-  //     width: 400,
-  //     height: 600,
-  //     frame: false,
-  //     resizable: false,
-  //     titleBarStyle: 'customButtonsOnHover',
-  //     show: false,
-  //     backgroundColor: '#1f1f1f',
-  //     minimizable: 'true',
-  //     icon: __dirname + '/Quark.ico',
-  //     acceptFirstMouse: true
-  //   })
-  //   //1080p
-  // }
   win = new BrowserWindow({
-    width: 800, //Math.ceil(perc(20.833, width)),
+    width: Math.ceil(perc(20.833, width)),
     height: Math.ceil(perc(55.555, height)),
     frame: false,
     resizable: false,
