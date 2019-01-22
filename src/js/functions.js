@@ -10,12 +10,6 @@ let enterPressed = false;
 let smileyCounter = 0;
 let backspaceCount = 0;
 
-/* TODO
-
-backspace
-
-*/
-
 window.addEventListener('keyup', function (event) {
     let key = event.key;
     console.log(key)
