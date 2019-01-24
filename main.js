@@ -23,7 +23,7 @@ function createWindow (width, height) {
     acceptFirstMouse: true
   })
 
-  win.openDevTools();
+  // win.openDevTools();
 
   win.once('ready-to-show', () => {
     win.show();
@@ -36,6 +36,12 @@ function createWindow (width, height) {
   })
 }
 
+app.on('ready', () => {
+  const electronScreen = electron.screen.getPrimaryDisplay().size;
+  var screenHeight = electronScreen.height;
+  var screenWidth = electronScreen.width;
+  createWindow(screenWidth, screenHeight);
+})
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

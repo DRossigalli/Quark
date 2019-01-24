@@ -111,6 +111,7 @@ window.addEventListener('keyup', function (event) {
         operator = undefined;
         secondNum = undefined;
         result = undefined;
+        enterPressed = false;
         mainDisplay.style.fontSize = '50px';
     }
     //Deleta o último digito
@@ -122,11 +123,12 @@ window.addEventListener('keyup', function (event) {
         //Verifica se tem resultado
         if (enterPressed) { //Tem resultado
             mainDisplay.textContent = '0';
-            secondDisplay.textContent = '';
+            secondDisplay.textContent = '0';
             result = undefined;
             firstNum = undefined;
             operator = undefined;
             secondNum = undefined;
+            enterPressed = false;
         } else {
             //Verifica se é o ultimo digito na tela
             if (mainDisplayString.length == 1) { //É o ultimo digito
