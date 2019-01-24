@@ -10,6 +10,15 @@ let enterPressed = false;
 let smileyCounter = 0;
 let backspaceCount = 0;
 
+function clearEverything() {
+    mainDisplay.style.fontSize = '50px';
+    firstNum = undefined;
+    operator = undefined;
+    secondNum = undefined;
+    result = undefined;
+    enterPressed = false;
+}
+
 window.addEventListener('keyup', function (event) {
     let key = event.key;
     console.log(key)
@@ -107,11 +116,7 @@ window.addEventListener('keyup', function (event) {
         event.preventDefault();
         mainDisplay.textContent = '0';
         secondDisplay.textContent = '';
-        firstNum = undefined;
-        operator = undefined;
-        secondNum = undefined;
-        result = undefined;
-        enterPressed = false;
+        clearEverything();
         mainDisplay.style.fontSize = '50px';
     }
     //Deleta o último digito
@@ -122,13 +127,9 @@ window.addEventListener('keyup', function (event) {
         
         //Verifica se tem resultado
         if (enterPressed) { //Tem resultado
+            secondDisplay.textContent = ' ';
             mainDisplay.textContent = '0';
-            secondDisplay.textContent = '0';
-            result = undefined;
-            firstNum = undefined;
-            operator = undefined;
-            secondNum = undefined;
-            enterPressed = false;
+            clearEverything();
         } else {
             //Verifica se é o ultimo digito na tela
             if (mainDisplayString.length == 1) { //É o ultimo digito
@@ -137,13 +138,15 @@ window.addEventListener('keyup', function (event) {
                 mainDisplayString = mainDisplayString.slice(0, mainDisplayString.length - 1);
                 mainDisplay.textContent = mainDisplayString;
             }
+
+            if (backspaceCount > 0 && mainDisplayString != 0) {
+                secondDisplayString = secondDisplayString.slice(0, secondDisplayString.length - 1);
+                secondDisplay.textContent = secondDisplayString;
+                backspaceCount -= 1;
+            }
         }
 
-        if (backspaceCount > 0 && mainDisplayString != 0) {
-            secondDisplayString = secondDisplayString.slice(0, secondDisplayString.length - 1);
-            secondDisplay.textContent = secondDisplayString; 
-            backspaceCount -= 1;
-        }
+        
     }
     //Calcula
     if (key == 'Enter') {
@@ -275,10 +278,7 @@ keys.addEventListener('click', function (event) {
             }
             mainDisplay.textContent = '0';
             secondDisplay.textContent = '';
-            firstNum = undefined;
-            operator = undefined;
-            secondNum = undefined;
-            result = undefined;
+            clearEverything();
         }
         //Botão de "="
         if (action === 'calculate') {
