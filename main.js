@@ -1,4 +1,4 @@
-const { app, BrowserWindow} = require('electron');
+const { app, BrowserWindow, autoUpdater} = require('electron');
 const electron = require('electron');
 
 if (require('electron-squirrel-startup')) return app.quit();
@@ -26,7 +26,7 @@ function createWindow (width, height) {
   win.openDevTools();
 
   win.once('ready-to-show', () => {
-    win.show()
+    win.show();
   })
 
   win.loadFile('src/index.html')
@@ -36,13 +36,6 @@ function createWindow (width, height) {
   })
 }
 
-app.on('ready', () => {
-  const electronScreen = electron.screen.getPrimaryDisplay().size;
-  const screenHeight = electronScreen.height;
-  const screenWidth = electronScreen.width;
-  console.log(screenWidth, screenHeight);
-  createWindow(screenWidth, screenHeight);
-});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
