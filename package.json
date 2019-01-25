@@ -1,7 +1,7 @@
 {
   "name": "quark",
   "productName": "Quark",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "Elegant electron-based calculator",
   "main": "main.js",
   "scripts": {

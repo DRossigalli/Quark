@@ -76,6 +76,7 @@ window.addEventListener('keyup', function (event) {
         } else  { //Tem resultado
             //Se tiver resultado e enter tiver sido pressionado
             if (enterPressed) { //Enter pressionado
+                enterPressed = false;
                 if (key == '*') {
                     secondDisplay.textContent += result + ' × ';
                 } else if (key == '/') {
