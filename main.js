@@ -1,7 +1,8 @@
-const { app, BrowserWindow, autoUpdater} = require('electron');
+const { app, BrowserWindow, BrowserView } = require('electron');
 const electron = require('electron');
 
 if (require('electron-squirrel-startup')) return app.quit();
+
 
 let win
 
@@ -11,8 +12,9 @@ function perc(percentage, number) {
 
 function createWindow (width, height) {
   win = new BrowserWindow({
-    width: Math.ceil(perc(20.833, width)),
-    height: Math.ceil(perc(55.555, height)),
+    title: 'Quark',
+    width: 400, //Math.ceil(perc(20.833, width)),
+    height: 660, //Math.ceil(perc(61.111111, height)),
     frame: false,
     resizable: false,
     titleBarStyle: 'customButtonsOnHover',
@@ -29,11 +31,19 @@ function createWindow (width, height) {
     win.show();
   })
 
-  win.loadFile('src/index.html')
+  win.loadFile('src/menu/index.html')
+  console.log(win.getPosition())
 
   win.on('closed', () => {
     win = null
   })
+}
+
+function createView () {
+  let view = new BrowserView({})
+  win.setBrowserView(view)
+  view.setBounds({ x: 0, y: 0, width: 400, height: 600 });
+  view.webContents.loadFile('src/main/index.html');
 }
 
 app.on('ready', () => {
@@ -41,6 +51,7 @@ app.on('ready', () => {
   var screenHeight = electronScreen.height;
   var screenWidth = electronScreen.width;
   createWindow(screenWidth, screenHeight);
+  createView();
 })
 
 app.on('window-all-closed', () => {
