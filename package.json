@@ -5,7 +5,7 @@
   "description": "Elegant electron-based calculator",
   "main": "main.js",
   "scripts": {
-    "start": "electron-forge start",
+    "start": "electron-forge start ELECTRON_IS_DEV=1",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
@@ -44,6 +44,7 @@
     }
   },
   "dependencies": {
+    "electron-is-dev": "^1.0.1",
     "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
