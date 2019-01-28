@@ -1,7 +1,18 @@
-const { app, BrowserWindow, autoUpdater} = require('electron');
+const { app, BrowserWindow, autoUpdater, Notification} = require('electron');
 const electron = require('electron');
-
 const isDev = require('electron-is-dev');
+
+app.setAppUserModelId("com.squirrel.quark.Quark")
+
+function notTest() {
+  if (Notification.isSupported) {
+    let not = new Notification({
+      title: 'App init'
+    })
+    not.show();
+  }
+}
+
 
 if (isDev) {
   console.log('Running in development');
@@ -18,26 +29,26 @@ if (isDev) {
    console.log(autoUpdater.getFeedURL())
 
   autoUpdater.on('error', (ev, err) => {
-    console.log(err)
+
   })
 
   autoUpdater.once('checking-for-update', (ev, err) => {
-    console.log('Checking for update')
+ 
   })
 
   autoUpdater.once('update-available', (ev, err) => {
-    console.log('Downloading update')
+
   })
 
   autoUpdater.once('update-not-available', (ev, err) => {
-    console.log('No updates')
+
   })
 
 
   autoUpdater.once('update-downloaded', (ev, err) => {
-    const msg = '<p style="margin: 0;">🤘 Update downloaded - <a onclick="quitAndInstall()">Restart</a></p>'
-    mainWindow.webContents.send('message', { msg, hide: false, replaceAll: true })
+
   })
+
 
   autoUpdater.checkForUpdates()
 }
@@ -88,6 +99,7 @@ app.on('ready', () => {
   var screenHeight = electronScreen.height;
   var screenWidth = electronScreen.width;
   createWindow(screenWidth, screenHeight);
+  notTest();
 })
 
 app.on('window-all-closed', () => {
@@ -100,6 +112,5 @@ app.on('activate', () => {
   if (win === null) {
     createWindow()
   }
-
-  app.setAppUserModelId("com.squirrel.quark.Quark")
 })
+
