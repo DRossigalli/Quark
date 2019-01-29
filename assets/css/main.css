@@ -112,6 +112,7 @@ body {
     background: linear-gradient(90deg, rgb(90, 0, 90) 0%, rgb(145,8,101) 50%, rgb(255,119,0) 100%);
     transition: 0.3s all;
     z-index: -1;
+    filter: blur(10px)
 }
 .options {
     transform: translate(0, -50%);
@@ -121,6 +122,7 @@ body {
     left: 0;
     background-color: white;
     padding: 5vh 0;
+    transition: 0.3s all;
 }
 .options:hover ~ .options_menu {
     display: inline-block;
@@ -143,6 +145,7 @@ body {
     display: inline-block;
 }
 .menu_item {
+    transition: 0.3s all;
     width: 100%;
     height: 40px;
     line-height: 40px;
@@ -189,20 +192,21 @@ body {
     transition: .3s;
     -webkit-user-select: none;
 }
-.button:not(.operator) {
+.number {
     background-color: black;
 }
-/* .button:hover {
-    background-color: #ff0000;
-} */
+.number:hover {
+    /* background-color: #1f1f1f !important; */
+    background-color: #1f1f1f !important;
+}
 .operator {
     background-color: rgba(0, 0, 0, 0)
 }
+.operator:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
 .active {
     background-color: rgba(0, 0, 0, 0.2);
-}
-.button:hover {
-    background-color: rgba(255, 255, 255, 0.15);
 }
 .zero {grid-area: zero;}
 .one {grid-area: one}

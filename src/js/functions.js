@@ -160,11 +160,8 @@ window.addEventListener('keyup', function (event) {
         //Easter Egg
         if (smileyCounter >= 10 && smileyCounter < 50) {
             mainDisplay.textContent = ':)';
-        } else if (smileyCounter >= 50 && smileyCounter < 100) {
-            mainDisplay.textContent = ':O';
-        } else if (smileyCounter > 100) {
-            mainDisplay.textContent = 'Chega :(';
         }
+        
         //Verifica se tem operador definido
         if (operator != undefined) {
             secondNum = mainDisplay.textContent;
@@ -206,7 +203,9 @@ keys.addEventListener('click', function (event) {
             //Se tiver "0" no display
             if (mainDisplay.textContent === '0') {
                 mainDisplay.textContent = keyContent;
-                secondDisplay.textContent += keyContent;
+                if (keyContent != '0') {
+                    secondDisplay.textContent += keyContent;
+                }
             } else { //Se não tiver "0" no display
                 mainDisplay.textContent += keyContent;
                 secondDisplay.textContent += keyContent;
@@ -253,6 +252,7 @@ keys.addEventListener('click', function (event) {
 
             //Se não for a primeira vez clicando no operador
             if (operator != undefined) {
+                secondNum = mainDisplay.textContent;
                 mainDisplay.textContent = '0';
                 result = calculate(firstNum, operator, secondNum);
                 firstNum = result;
@@ -274,12 +274,37 @@ keys.addEventListener('click', function (event) {
         }
         //Se for o botão clear
         if (action === 'clear') {
-            for (var i = 0; i < operatorKeys.length; i++) {
-                operatorKeys[i].classList.remove('active');
+            // for (var i = 0; i < operatorKeys.length; i++) {
+            //     operatorKeys[i].classList.remove('active');
+            // }
+            // mainDisplay.textContent = '0';
+            // secondDisplay.textContent = '';
+            // clearEverything();
+
+            let mainDisplayString = mainDisplay.textContent.toString();
+            let secondDisplayString = secondDisplay.textContent.toString();
+            backspaceCount = mainDisplayString.length;
+
+            //Verifica se tem resultado
+            if (enterPressed) { //Tem resultado
+                secondDisplay.textContent = ' ';
+                mainDisplay.textContent = '0';
+                clearEverything();
+            } else {
+                //Verifica se é o ultimo digito na tela
+                if (mainDisplayString.length == 1) { //É o ultimo digito
+                    mainDisplay.textContent = '0';
+                } else { //Não é o útimo digito
+                    mainDisplayString = mainDisplayString.slice(0, mainDisplayString.length - 1);
+                    mainDisplay.textContent = mainDisplayString;
+                }
+
+                if (backspaceCount > 0 && mainDisplayString != 0) {
+                    secondDisplayString = secondDisplayString.slice(0, secondDisplayString.length - 1);
+                    secondDisplay.textContent = secondDisplayString;
+                    backspaceCount -= 1;
+                }
             }
-            mainDisplay.textContent = '0';
-            secondDisplay.textContent = '';
-            clearEverything();
         }
         //Botão de "="
         if (action === 'calculate') {
